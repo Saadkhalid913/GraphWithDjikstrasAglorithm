@@ -72,6 +72,7 @@ class Graph():
             print(f"{node}: {self.adjacencylist[node]}") 
     
     def addedge(self, a,b,weight: int):
+        assert a in self and b in self, "Both nodes must be in graph"
         self.adjacencylist[a][b] = weight
 
     def shortestpath(self, a,b, returntype="path"):
@@ -118,13 +119,3 @@ class Graph():
         elif returntype.lower() == "tuple":
             return tuple(ToPath(a,b,PreviousNodes, stack()) + [distances[b]])
 
-G = Graph()
-
-G.add(1,2,3,4,5,6)
-G.addedge(1,2,7)
-G.addedge(1,3,1)
-G.addedge(3,4,1)
-G.addedge(4,5,1)
-G.addedge(5,2,1)
-G.addedge(1,4,2)
-print(G.shortestpath(1,2))
