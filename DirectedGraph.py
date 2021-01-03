@@ -68,6 +68,9 @@ class Graph():
                 self.adjacencylist[node] = {}
 
     def view(self):
+        '''
+        Prints each node with dict of edges with corresponding weights 
+        '''
         for node in self:
             print(f"{node}: {self.adjacencylist[node]}") 
     
