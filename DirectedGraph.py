@@ -68,9 +68,6 @@ class Graph():
                 self.adjacencylist[node] = {}
 
     def view(self):
-        '''
-        Prints each node with dict of edges with corresponding weights 
-        '''
         for node in self:
             print(f"{node}: {self.adjacencylist[node]}") 
     
@@ -95,7 +92,6 @@ class Graph():
         visited = set()
         distances = {node : float("inf") for node in self}
         distances[a] = 0
-
         PreviousNodes = {} 
 
         Q = priorityqueue()
@@ -109,8 +105,10 @@ class Graph():
                     continue
 
                 current_distance = distances[ToNode]
-                if current_distance > distances[node] + self.adjacencylist[node][ToNode]:
-                    distances[ToNode] = distances[node] + self.adjacencylist[node][ToNode]
+                weight_of_edge = self.adjacencylist[node][ToNode]
+
+                if current_distance > distances[node] + weight_of_edge:
+                    distances[ToNode] = distances[node] + weight_of_edge
                     PreviousNodes[ToNode] = node
                 
                 Q.add((ToNode, self.adjacencylist[node][ToNode]))
